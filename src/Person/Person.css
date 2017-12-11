@@ -1,0 +1,16 @@
+.Person {
+    width : 60%;
+    margin : 16px auto;
+    border : 1px solid rgb(17, 16, 16);
+    box-shadow : 0 2px 3px rgb(17, 17, 17);
+    padding : 16px;
+    text-align: center;
+}
+.form-control{
+    width : 30%;
+    margin-left : 35%;
+    text-align: center;
+}
+.jumbotron{
+    margin-top: 0px;
+}
