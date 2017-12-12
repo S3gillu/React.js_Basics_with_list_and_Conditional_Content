@@ -1,3 +1,10 @@
 .App {
   text-align: center;
 }
+
+.blueviolet {
+  color: blueviolet;
+}
+.bold{
+  font-weight:bold;
+}

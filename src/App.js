@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Person from './Person/Person';
+import Radium, { StyleRoot } from 'radium';
 import './App.css';
 
 class App extends Component {
@@ -44,6 +45,14 @@ class App extends Component {
 
   render() {
 
+    const style = {
+      cursor: 'pointer',
+      ':hover': {
+        backgroundColor: 'lightgreen',
+        color: 'black'
+      }
+    }
+
     const style1 = {
       color: 'orangered'
     }
@@ -62,25 +71,40 @@ class App extends Component {
               changed={(event) => this.nameChangeHandler(event, person.id)} />
           })}
         </div>
-      )
+      );
+      style.backgroundColor = 'maroon';
+      style[':hover'] = {
+        backgroundColor: 'salmon',
+        color: 'black'
+      }
+    }
+
+    const classes = [];
+    if (this.state.persons.length <= 2) {
+      classes.push('blueviolet ');
+    }
+    if (this.state.persons.length <= 1) {
+      classes.push('bold');
     }
 
     return (
-      <div className="jumbotron">
-        <div className="App">
-          <h1 style={style1}> Hi, I am a react application </h1>
-          <p style={style1}> This is really working </p>
+      <StyleRoot>
+        <div className="jumbotron">
+          <div className="App">
+            <h1 style={style1}> Hi, I am a react application </h1>
+            <p className={classes.join(' ')}> This is really working </p>
 
-          <button type="button" className="btn btn-success"
-            onClick={this.togglePersonHandler.bind(this)}
-          >Click Me</button>
+            <button type="button" className="btn btn-success" style={style}
+              onClick={this.togglePersonHandler.bind(this)}
+            >Click Me</button>
 
-          {persons}
+            {persons}
 
+          </div>
         </div>
-      </div>
+      </StyleRoot>
     );
   }
 }
 
-export default App;
+export default Radium(App);
